@@ -72,4 +72,8 @@ A prompting strategy I realized would e really beneficial in any siutation was t
 
 - What is one thing you would do differently next time you work with AI on a coding task?
 
+Next time, I would try to make better prompts and ask it to be more descriptive by adding comments to not lose track of all the changes occuring in the code.
+
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+I realized AI can be a tool that can either enhace your understanding of certain problems, and help you learn new implementations of code, while also becoming a detrimental tool if not used as a learning tool. So, AI generated code is great if used correctly.

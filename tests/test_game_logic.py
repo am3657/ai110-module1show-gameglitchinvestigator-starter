@@ -1,4 +1,28 @@
-from logic_utils import check_guess
+from logic_utils import check_guess, get_range_for_difficulty
+
+def test_range_easy():
+    # Easy difficulty should return a range of 1 to 20
+    low, high = get_range_for_difficulty("Easy")
+    assert low == 1
+    assert high == 20
+
+def test_range_normal():
+    # Normal difficulty should return a range of 1 to 100
+    low, high = get_range_for_difficulty("Normal")
+    assert low == 1
+    assert high == 100
+
+def test_range_hard():
+    # Hard difficulty should return a range of 1 to 50
+    low, high = get_range_for_difficulty("Hard")
+    assert low == 1
+    assert high == 50
+
+def test_range_unknown():
+    # An unrecognized difficulty should fall back to the default range of 1 to 100
+    low, high = get_range_for_difficulty("Unknown")
+    assert low == 1
+    assert high == 100
 
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win

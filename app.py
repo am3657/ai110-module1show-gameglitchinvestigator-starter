@@ -90,11 +90,12 @@ low, high = get_range_for_difficulty(difficulty)
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
+#Fix me, the ranges were not correctly showed, giving the same 1-100 range for all difficulties.
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
 if "attempts" not in st.session_state:
-    st.session_state.attempts = 1
+    st.session_state.attempts = 0  # fixed: was 1, causing attempts display to be off by one
 
 if "score" not in st.session_state:
     st.session_state.score = 0
@@ -108,7 +109,7 @@ if "history" not in st.session_state:
 st.subheader("Make a guess")
 
 st.info(
-    f"Guess a number between 1 and 100. "
+    f"Guess a number between {low} and {high}. "  # fixed: range was hardcoded to 1-100, now uses difficulty-based low/high
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
 
