@@ -41,21 +41,23 @@ It wrote the code, ran away, and now the game is unplayable.
 
 - [ ] Explain what fixes you applied.
 
-Fix #1:
+Fix #1: Backward hints
 
 The bug was in the check_guess function — when my guess was too high, the game told me to go higher, and when it was too low, it told me to go lower. That's completely backwards. The fix was simple: swap the hint messages so "Too High" points you down ("Go LOWER") and "Too Low" points you up ("Go HIGHER"). Once that was fixed, I also had to implement the function in logic_utils.py and update the tests to correctly unpack the tuple the function returns before the tests could actually run and pass.
 
-Fix #2:
+Fix #2: Displaying the wrong ranges for all the difficulty modes and number of attempts
+
+The attempts counter was initialized to 1 instead of 0, making the display always show one fewer attempt than allowed. The in-game range prompt was also hardcoded to "1 and 100" regardless of difficulty, so I updated it to use the actual low and high variables. I also started moving the game logic into logic_utils.py and wrote pytest tests to verify each difficulty returns the correct number range.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Pick any difficulty mode you like from the settings sidebar
+2. Guess a number from the given range in which the secret is present
+3. Enter your guess and hit submit guess.
+4. Repeat step 3 until you either find the secret or you have exhasuted your allowed attempts
+5. Once the game is over, hit new game, and start over.
 
 **Screenshot** _(optional)_: <!-- Insert a screenshot of your fixed, winning game here -->
 
@@ -69,15 +71,24 @@ Describe your fixed game in numbered steps so a reader can follow along without 
 
 ### Pytest to show that hints are now being displayed correclty.
 
-platform win32 -- Python 3.13.7, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\akaas\AppData\Local\Programs\Python\Python313\python.exe
-cachedir: .pytest_cache
-rootdir: C:\Codepath class\ai110-module1show-gameglitchinvestigator-starter
-collected 3 items
+> > python -m pytest tests/test_game_logic.py -v
+> > ================================================ test session starts =================================================
+> > platform win32 -- Python 3.13.7, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\akaas\AppData\Local\Programs\Python\Python313\python.exe
+> > cachedir: .pytest_cache
+> > rootdir: C:\Codepath class\ai110-module1show-gameglitchinvestigator-starter
+> > collected 7 items
 
-tests/test_game_logic.py::test_winning_guess PASSED [ 33%]
-tests/test_game_logic.py::test_guess_too_high PASSED [ 66%]
-tests/test_game_logic.py::test_guess_too_low PASSED
+tests/test_game_logic.py::test_range_easy PASSED [ 14%]
+tests/test_game_logic.py::test_range_normal PASSED [ 28%]
+tests/test_game_logic.py::test_range_hard PASSED [ 42%]
+tests/test_game_logic.py::test_range_unknown PASSED [ 57%]
+tests/test_game_logic.py::test_winning_guess PASSED [ 71%]
+tests/test_game_logic.py::test_guess_too_high PASSED [ 85%]
+tests/test_game_logic.py::test_guess_too_low PASSED [100%]
+
+================================================= 7 passed in 0.04s ==================================================
 
 ## 🚀 Stretch Features
 
 - [ ] [If you choose to complete Challenge 4, describe the Enhanced UI changes here — a screenshot is optional]
+      Some enhanced UI changes I would make here is that I would add more features concerning each diffuculty, and eventually make the UI itself more engaging for the user. Aside from the UI changes, I would ensure all the bugs are fixed in the app, making it a flawless game.

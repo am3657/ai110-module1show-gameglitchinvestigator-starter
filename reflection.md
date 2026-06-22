@@ -39,7 +39,7 @@ The AI gave the right suggestion when fixing the glitch of the hints being backw
 
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
----
+The AI suggestions were never really incorrect or misleading, however, there were times were the AI would pick up certain bonus bugs not related to my prompt. For instance, it tried fixing the bug with the "New Game" button, when I was asking it to fix the bug concerning the difficulty ranges and attempts. To fix, I would be more specfic with my prompting so that the AI doesn't get distracted from the goal.
 
 ## 3. Debugging and testing your fixes
 
